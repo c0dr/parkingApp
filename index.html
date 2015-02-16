@@ -1,0 +1,51 @@
+<!doctype html>
+<html ng-app="parkingApp">
+<meta charset="UTF-8">
+
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href="style.css" rel="stylesheet">
+
+    <body>
+        <div ng-controller="parkingController" class="container-fluid">
+
+            <h2>Finde den nächsten freien Parkplatz</h2>
+            <h3 ng-if="!parkingSpots">Lädt...</h3>
+
+            <div class="btn-group" role="group" aria-label="">
+                <button class="btn" ng-class="order == 'properties.free' ? 'btn-primary' : 'btn-default'" ng-click="changeOrder('properties.free')">Nach verfügbaren sortieren</button>
+                <button class="btn" ng-class="order == 'properties.distance' ? 'btn-primary' : 'btn-default'" ng-click="changeOrder('properties.distance')">Nach Luftlinie sortieren</button>
+            </div>
+
+
+            <div class="spots">
+
+                <div ng-repeat="spot in parkingSpots | orderBy: order: reverse" freeColor spot="spot" class="container-fluid">
+
+                    <div class="col-sm-1">
+                        <div class="freespots">{{spot.properties.free}}</div>
+                    </div>
+
+                    <div class="col-sm-9">
+                        <div class="parkingname">{{spot.properties.name}}</div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="freespots">{{spot.properties.distance + 'km' || ''}}</div>
+                    </div>
+
+                </div>
+            </div>
+
+        <p>Daten: © <a href="http://www5.stadt-muenster.de/parkhaeuser/">Stadt Münster</a> für die Parkplatzdaten, © <a href="http://www.openstretmap.org/copyright"> OpenStreetMaps-Mitwirkende</a> für die Geoinformationen der Parkplätze. Aufbereitet von <a href="http://codeformuenster.org">Code For Muenster </a>
+        </p>
+
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+        <script src="ngGeolocation.min.js"></script>
+        <script src="app.js"></script>
+    </body>
+
+</html>

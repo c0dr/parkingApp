@@ -1,0 +1,18 @@
+body {
+    color: #F3F3F3;
+    background: #34495e;
+    font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
+.spots {
+    color: #2c3e50;
+}
+
+.freespots {
+    font-weight: 300;
+    font-size:3em;
+}
+
+.parkingname {
+    font-weight: 400;
+}
