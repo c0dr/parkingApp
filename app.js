@@ -11,7 +11,7 @@ angular.module('parkingApp', ['ngGeolocation'])
             }
             $scope.order = by;
         }
-        $http.get('http://cfm-parkleit-api.gigantic.io/').success(function(data) {
+        $http.get('http://parkleit-api.codeformuenster.org/').success(function(data) {
 
             $scope.parkingSpots = data.features;
             $scope.geojson = {
@@ -22,7 +22,7 @@ angular.module('parkingApp', ['ngGeolocation'])
 
         }).error(function() {
 
-            $document.find('body').eq(0).html('<div class="container alert alert-danger"><span class="glyphicon-exclamation-sign"></span> Beim Laden der Parkplatzdaten ist ein Fehler aufgetreten. ' + 
+            $document.find('body').eq(0).html('<div class="container alert alert-danger"><span class="glyphicon glyphicon-exclamation-sign"></span> Beim Laden der Parkplatzdaten ist ein Fehler aufgetreten. ' + 
                 'Bitte später erneut versuchen.</div>');
         })
 
